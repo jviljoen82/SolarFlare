@@ -16,7 +16,7 @@ public class PingPong implements HttpHandler {
         if("GET".equals(httpExchange.getRequestMethod())) {
             OutputStream outputStream = httpExchange.getResponseBody();
 
-            String htmlBuilder = "PONG";
+            String htmlBuilder = "PONG!\n";
 
             // encode HTML content
             // String htmlResponse = StringEscapeUtils.escapeHtml4(htmlBuilder);
@@ -26,6 +26,7 @@ public class PingPong implements HttpHandler {
             outputStream.write(htmlBuilder.getBytes());
             outputStream.flush();
             pingLog.info("PING PONG!");
+            outputStream.close();
         } else {
             httpExchange.sendResponseHeaders(404, 0);
             pingLog.error("/ping only has GET");

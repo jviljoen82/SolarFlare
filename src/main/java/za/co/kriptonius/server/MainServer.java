@@ -23,6 +23,7 @@ public class MainServer {
         serverLog.info("Starting API server on: " + serverIP + " PORT: " + serverPort);
         SERVER = HttpServer.create(new InetSocketAddress(serverIP, serverPort), 0);
         SERVER.createContext("/ping", new PingPong());
+        SERVER.createContext("/login", new Login());
         SERVER.start();
     }
 
